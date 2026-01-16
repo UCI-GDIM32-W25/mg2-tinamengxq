@@ -23,13 +23,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x,playerSpeed);
             _isGrounded = false;
         }
+        coinCountUI.UpdateCoin(numberEat);
+    }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Coin"))
+        {
+            collision.gameObject.SetActive(false);
+            numberEat += 1;
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            _isGrounded = true;
+        }
     }
 }
 

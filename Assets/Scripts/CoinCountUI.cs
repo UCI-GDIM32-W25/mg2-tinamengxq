@@ -12,6 +12,6 @@ public class CoinCountUI : MonoBehaviour
 
     public void UpdateCoin(int coinEaten)
     {
-        _coinText.text = $"Points: {coinEaten}";
+        _coinText.text = "Points:" + coinEaten;
     }
 }
