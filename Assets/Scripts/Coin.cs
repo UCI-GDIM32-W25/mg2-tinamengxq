@@ -9,11 +9,11 @@ public class Coin : MonoBehaviour
     [SerializeField] private float disappear = -10f;
     [SerializeField] private Transform _bird;
     [SerializeField] private float groundLevel = 1f;
-    [SerializeField] private float close = 1f;
+    [SerializeField] private float close = 0.1f;
     [SerializeField] private float far = 3f;
-    [SerializeField] private float waitTill = 0.1f;
+    [SerializeField] private float waitTill = 1f;
     private static float next = 10f;
-    private bool appeared = false;
+    private static bool appeared = false;
     private bool ready = false;
     private float timer = 0f;
     // Start is called before the first frame update
@@ -37,6 +37,7 @@ public class Coin : MonoBehaviour
             if (timer <= 0f)
             {
                 NextAppear();
+                appeared = false;
             }
 
         }
