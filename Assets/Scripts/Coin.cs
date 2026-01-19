@@ -20,7 +20,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private Transform _ground;
 
     //Distance from the previous coin
-    [SerializeField] private float coinAppearDistance = 1f;
+    //[SerializeField] private float coinAppearDistance = 1f;
 
     //Timer
     private float timer = 0f;
