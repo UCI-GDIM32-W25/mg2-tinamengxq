@@ -4,55 +4,98 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    //[SerializeField] private float appear = 10f;
-    [SerializeField] private int coinSpeed = 2;
-    [SerializeField] private float disappear = -10f;
-    [SerializeField] private Transform _bird;
-    [SerializeField] private float groundLevel = 1f;
-    [SerializeField] private float close = 0.1f;
-    [SerializeField] private float far = 3f;
-    [SerializeField] private float waitTill = 1f;
-    private static float next = 10f;
-    private static bool appeared = false;
-    private bool ready = false;
+    //Link to other game objects and prefabs
+    [SerializeField] private CoinCountUI CoinCountUI;
+    [SerializeField] private Coin coinPrefab;
+
+    //Coin moving speed
+    [SerializeField] private float coinSpeed = 2f;
+
+    //Random.Range(time till next appear)
+    [SerializeField] private float coinAppearSoonest = 0.1f;
+    [SerializeField] private float coinAppearSlowest = 3f;
+
+    //y-level coin will appear
+    [SerializeField] private float coinAppearLevel = 1f;
+    [SerializeField] private Transform _ground;
+
+    //Distance from the previous coin
+    [SerializeField] private float coinAppearDistance = 1f;
+
+    //Timer
     private float timer = 0f;
+    private float nextCoinAppearTime;
+
+    //Coin controller
+    public bool coinController = false;
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        if(appeared == false)
+        if (coinController)
         {
-            appeared = true;
-            ready = true;
-            timer = waitTill;
+            TimeforNextCoinAppear();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * coinSpeed * Time.deltaTime);
-        if (ready)
+        if (coinController)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0f)
+            timer += Time.deltaTime;
+            if (timer >= nextCoinAppearTime)
             {
-                NextAppear();
-                appeared = false;
+                NextCoinAppear();
+                timer = 0f;
+                TimeforNextCoinAppear();
             }
-
         }
-        if (transform.position.x < disappear)
+        else
         {
-            Destroy(gameObject);
+            MoveCoin();
         }
+
+
     }
 
-    void NextAppear()
+    //Set time for next coin to appear
+    void TimeforNextCoinAppear()
     {
-        next += Random.Range(close,far);
-        float level = _bird.position.y + groundLevel;
-        Vector3 position = new Vector3(next, level, 0);
-        Instantiate(gameObject,position,transform.rotation);
-        timer = waitTill;
+        nextCoinAppearTime = Random.Range(coinAppearSoonest,coinAppearSlowest);
+    }
+
+    //Move coin
+    void MoveCoin()
+    {
+        transform.Translate(Vector2.left * coinSpeed * Time.deltaTime);
+    }
+
+    //Call next coin to appear
+    void NextCoinAppear()
+    {
+        //Initial position.x
+        Camera mainCamera = Camera.main;
+        float coinInitialPlace = mainCamera.ViewportPointToRay(new Vector3(1, 0, mainCamera.nearClipPlane)).origin.x + 1f;
+
+        //Position.y
+        float level = _ground.position.y + coinAppearLevel;
+        Vector3 position = new Vector3(coinInitialPlace, level, 0);
+
+        Coin newCoin = Instantiate(coinPrefab,position,transform.rotation);
+        newCoin.CoinCountUI = CoinCountUI;
+    }
+
+    //Collision with player to add score
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player") && !coinController)
+        {
+            CoinCountUI.EatACoin();
+            Destroy(gameObject);
+        }
     }
 }

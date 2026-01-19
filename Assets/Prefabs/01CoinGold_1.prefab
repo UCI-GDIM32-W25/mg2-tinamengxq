@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1809291511, guid: 3f9b2d9ce56684a52bab7916d32b4eac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,13 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d51f308fd5e4cb6864300f597cffde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinCountUI: {fileID: 0}
+  coinPrefab: {fileID: 6089933165682328055}
   coinSpeed: 2
-  disappear: -10
-  _bird: {fileID: 0}
-  groundLevel: 1
-  close: 1
-  far: 3
-  waitTill: 0.1
+  coinAppearSoonest: 0.1
+  coinAppearSlowest: 2
+  coinAppearLevel: 1
+  _ground: {fileID: 0}
+  coinAppearDistance: 1
+  coinController: 0
 --- !u!70 &2304124427483503674
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

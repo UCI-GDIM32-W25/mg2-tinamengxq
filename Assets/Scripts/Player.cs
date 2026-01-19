@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
     [SerializeField]private SpriteRenderer _spriteRenderer;
     private bool _isGrounded = true;
 
-    private int numberEat;
+    
     // Start is called before the first frame update
     void Start()
     {
-        numberEat = 0;
+        
     }
 
     // Update is called once per frame
@@ -25,24 +25,26 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x,playerSpeed);
-            _isGrounded = false;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x,playerSpeed); 
         }
-        coinCountUI.UpdateCoin(numberEat);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Coin"))
-        {
-            collision.gameObject.SetActive(false);
-            numberEat += 1;
-        }
-
         if (collision.gameObject.CompareTag("Platform"))
         {
             _isGrounded = true;
         }
     }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            _isGrounded = false;
+        }
+    }
+    
+
 }
 
