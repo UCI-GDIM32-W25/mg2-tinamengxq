@@ -103,9 +103,8 @@ MonoBehaviour:
   coinSpeed: 2
   coinAppearSoonest: 0.1
   coinAppearSlowest: 2
-  coinAppearLevel: 1
+  coinAppearLevel: 5
   _ground: {fileID: 0}
-  coinAppearDistance: 1
   coinController: 0
 --- !u!70 &2304124427483503674
 CapsuleCollider2D:

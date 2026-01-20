@@ -154,10 +154,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2028186878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -286, y: 238}
-  m_SizeDelta: {x: 301.1733, y: 44.3793}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 177, y: -37}
+  m_SizeDelta: {x: 301.17334, y: 44.379303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116747326
 MonoBehaviour:
@@ -472,8 +472,8 @@ Transform:
   m_GameObject: {fileID: 812033823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.747, y: 10.0445, z: 0}
-  m_LocalScale: {x: 17.471708, y: 3.813455, z: 1}
+  m_LocalPosition: {x: 5.7637, y: 9.0121, z: 0}
+  m_LocalScale: {x: 23.70011, y: 5.8782134, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e603ad6ec34384919a36134abddb1ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCountUI: {fileID: 0}
+  coinCountUI: {fileID: 2028186879}
   playerSpeed: 5
   _rigidbody: {fileID: 1214397141}
   _spriteRenderer: {fileID: 1214397139}
@@ -844,9 +844,8 @@ MonoBehaviour:
   coinSpeed: 2
   coinAppearSoonest: 0.1
   coinAppearSlowest: 3
-  coinAppearLevel: 3.8
+  coinAppearLevel: 5
   _ground: {fileID: 812033827}
-  coinAppearDistance: 1
   coinController: 1
 --- !u!212 &4364061676513726670
 SpriteRenderer:
@@ -890,7 +889,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -1809291511, guid: 3f9b2d9ce56684a52bab7916d32b4eac, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

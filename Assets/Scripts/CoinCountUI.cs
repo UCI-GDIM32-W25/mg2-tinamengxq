@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
-using TMPro.EditorUtilities;
+//using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class CoinCountUI : MonoBehaviour
